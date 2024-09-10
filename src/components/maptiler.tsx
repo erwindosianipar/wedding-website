@@ -1,33 +1,31 @@
-"use client"
+"use client";
 
-import "@maptiler/sdk/dist/maptiler-sdk.css"
-import { config, Map, Marker, MapStyle } from "@maptiler/sdk"
-import { renderToStaticMarkup } from "react-dom/server"
-import { useEffect, useRef } from "react"
-import { isEqual, isUndefined } from "lodash"
-import { LatLngModel, MapTilerPropsModel } from "@/types/models"
+import "@maptiler/sdk/dist/maptiler-sdk.css";
+import { config, Map, Marker, MapStyle } from "@maptiler/sdk";
+import { renderToStaticMarkup } from "react-dom/server";
+import { useEffect, useRef } from "react";
+import { isEqual, isUndefined } from "lodash";
 
-config.apiKey = process.env.NEXT_PUBLIC_MAP_TILER_KEY as string
+import { LatLngModel, MapTilerPropsModel } from "@/types/models";
+
+config.apiKey = process.env.NEXT_PUBLIC_MAP_TILER_KEY as string;
 
 const MapTilerMap = (props: MapTilerPropsModel) => {
-  const mapRef = useRef<Map | null>(null)
-  const prevCenterRef = useRef<LatLngModel>()
+  const mapRef = useRef<Map | null>(null);
+  const prevCenterRef = useRef<LatLngModel>();
 
   useEffect(() => {
-    prevCenterRef.current = props.center
-  })
+    prevCenterRef.current = props.center;
+  });
 
-  const prevCenter = prevCenterRef.current
+  const prevCenter = prevCenterRef.current;
 
   useEffect(() => {
-    if (mapRef.current) return
+    if (mapRef.current) return;
 
     mapRef.current = new Map({
       container: "map",
-      center: [
-        props.center.lng,
-        props.center.lat,
-      ],
+      center: [props.center.lng, props.center.lat],
       zoom: props.zoom,
       maxZoom: props.maxZoom,
       minZoom: props.minZoom,
@@ -35,13 +33,14 @@ const MapTilerMap = (props: MapTilerPropsModel) => {
       navigationControl: props.showNavigation,
       interactive: props.isInteractive,
       pitch: props.pitch || 0,
-    })
+    });
 
-    mapRef.current?.setStyle(MapStyle.STREETS)
+    mapRef.current?.setStyle(MapStyle.STREETS);
 
     props.marker?.map((item: any) => {
-      const div = document.createElement("div")
-      div.innerHTML = renderToStaticMarkup(item.marker)
+      const div = document.createElement("div");
+
+      div.innerHTML = renderToStaticMarkup(item.marker);
 
       new Marker({
         draggable: item.isDragable,
@@ -50,27 +49,27 @@ const MapTilerMap = (props: MapTilerPropsModel) => {
         offset: item.offset,
       })
         .setLngLat([item.lng, item.lat])
-        .addTo(mapRef.current as Map)
-    })
-  }, [props])
+        .addTo(mapRef.current as Map);
+    });
+  }, [props]);
 
   useEffect(() => {
-    mapRef.current?.zoomTo(props.zoom)
-  }, [props.zoom])
+    mapRef.current?.zoomTo(props.zoom);
+  }, [props.zoom]);
 
   useEffect(() => {
     if (!isUndefined(prevCenter) && !isEqual(prevCenter, props.center)) {
       mapRef.current?.flyTo({
-        center: [props.center.lng, props.center.lat]
-      })
+        center: [props.center.lng, props.center.lat],
+      });
     }
-  }, [props.center, prevCenter])
+  }, [props.center, prevCenter]);
 
   return (
     <div className="map-wrap">
-      <div id="map" className="map" />
+      <div className="map" id="map" />
     </div>
-  )
-}
+  );
+};
 
-export default MapTilerMap
+export default MapTilerMap;

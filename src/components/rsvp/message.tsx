@@ -1,6 +1,7 @@
-import { GuestbookModel } from "@/types/models"
-import { Card, CardBody, Chip, User } from "@nextui-org/react"
-import moment from "moment"
+import moment from "moment";
+import { Card, CardBody, Chip, User } from "@nextui-org/react";
+
+import { GuestbookModel } from "@/types/models";
 
 const Message = ({ props }: { props: GuestbookModel }) => {
   return (
@@ -11,23 +12,23 @@ const Message = ({ props }: { props: GuestbookModel }) => {
             avatarProps={{
               size: "sm",
             }}
+            description={moment(props.created_at).format(
+              "DD MMMM YYYY | HH:mm",
+            )}
             name={props.name}
-            description={moment(props.created_at).format("DD MMMM YYYY | HH:mm")}
           />
           <Chip
             color={props.present ? "primary" : "default"}
-            variant="flat"
             size="sm"
+            variant="flat"
           >
             {props.present ? "Akan Hadir" : "Tidak Hadir"}
           </Chip>
         </div>
-        <div className="text-sm">
-          {props.message}
-        </div>
+        <div className="text-sm">{props.message}</div>
       </CardBody>
     </Card>
-  )
-}
+  );
+};
 
-export default Message
+export default Message;
