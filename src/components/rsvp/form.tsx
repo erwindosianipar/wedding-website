@@ -31,7 +31,7 @@ const Form = () => {
   }, [state])
 
   useEffect(() => {
-    setGuestName(searchParams.get("name"))
+    setGuestName(searchParams.get("name") ?? "")
   }, [searchParams])
 
   return (
