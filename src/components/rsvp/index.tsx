@@ -3,6 +3,7 @@ import Form from "./form"
 import Message from "./message"
 import { GuestbookModel } from "@/types/models"
 import { sql } from "@vercel/postgres"
+import { Suspense } from "react"
 
 const getMessages = async (): Promise<GuestbookModel[]> => {
   try {
@@ -33,7 +34,9 @@ const RSVP = async () => {
           </div>
         </div>
         <div className="container-xs">
-          <Form />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Form />
+          </Suspense>
         </div>
         <div className="container-xl grid grid-cols-3 max-md:grid-cols-1 max-lg:grid-cols-2 gap-4 font-mono">
           {messages.map((item) =>
