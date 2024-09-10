@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GLOBAL */
+
+* {
+  @apply antialiased scroll-smooth [scroll-margin-top:4rem]
+}
+
+body {
+  @apply font-sans
+}
+
+/* CONTAINER */
+
+.container-xs {
+  @apply max-w-[512px] w-full mx-auto px-2
+}
+
+.container-sm {
+  @apply max-w-[640px] w-full mx-auto px-2
+}
+
+.container-md {
+  @apply max-w-[768px] w-full mx-auto px-2
+}
+
+.container-lg {
+  @apply max-w-[1024px] w-full mx-auto px-2
+}
+
+.container-xl {
+  @apply max-w-[1280px] w-full mx-auto px-2
+}
+
+/* MAPTILER */
+
+.map-wrap, .map {
+  @apply absolute w-full h-full inset-0
+}
+
+/* HIDE MAPTILER AND CONTRIBUTION ELEMENT */
+.maplibregl-ctrl-bottom-left, .maplibregl-ctrl-bottom-right {
+  @apply hidden
+}
+
+/* FORCE USE SYSTEM FONT */
+.maplibregl-map {
+  @apply !font-sans
+}
+
+/* UTILITIES */
+
+.cdvh {
+  @apply h-[calc(100dvh-4rem)]
+}
