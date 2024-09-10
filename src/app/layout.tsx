@@ -31,7 +31,15 @@ export default function RootLayout({
           <div className="font-mono">
             <Toaster position="bottom-center" />
           </div>
-          <Suspense fallback={<>Loading...</>}>{children}</Suspense>
+          <Suspense
+            fallback={
+              <div className="h-screen font-mono flex place-content-center items-center">
+                Loading...
+              </div>
+            }
+          >
+            {children}
+          </Suspense>
         </Providers>
       </body>
     </html>
