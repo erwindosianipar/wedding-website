@@ -3,9 +3,8 @@
 > [!CAUTION]
 > Free for personal use. This source code is prohibited for sale and commercialization.
 
-Screenshot | Screenshot
--- | --
 ![Home](/screenshot/home.png) | ![Reception](/screenshot/reception.png)
+-- | --
 ![Support](/screenshot/support.png) | ![RSVP](/screenshot/rsvp.png)
 
 # Getting Started
