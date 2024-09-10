@@ -14,7 +14,7 @@ const Navbar = () => {
       classNames={{
         base: "drop-shadow",
       }}
-      isBlurred={true}
+      isBlurred={false}
       shouldHideOnScroll={false}
     >
       <NavbarBrand>

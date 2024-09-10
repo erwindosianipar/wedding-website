@@ -13,7 +13,7 @@ import {
 import toast from "react-hot-toast";
 
 const Support = () => {
-  const accountNumber = "8090138651";
+  const accountNumber = "0000000000";
   const address =
     "Perumahan Lipsum, Jl. Lorem Ipsum No. 1A, RT00/RW00, Kec. Dolor, Kab. Sit Amet";
 

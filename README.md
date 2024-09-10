@@ -6,9 +6,6 @@
 Screenshot | Screenshot
 -- | --
 ![Home](/screenshot/home.png) | ![Reception](/screenshot/reception.png)
-
-Screenshot | Screenshot
--- | --
 ![Support](/screenshot/support.png) | ![RSVP](/screenshot/rsvp.png)
 
 # Getting Started
