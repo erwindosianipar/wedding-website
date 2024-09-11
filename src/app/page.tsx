@@ -1,5 +1,4 @@
 import Wallpaper from "@/components/wallpaper";
-import Navbar from "@/components/navbar";
 import Introduction from "@/components/introduction";
 import Information from "@/components/information";
 import Footer from "@/components/footer";
@@ -9,7 +8,6 @@ import Support from "@/components/support";
 export default function Home() {
   return (
     <main id="main">
-      <Navbar />
       <Wallpaper
         props={{
           background: "bg-sky-100",

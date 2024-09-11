@@ -5,17 +5,31 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-} from "@nextui-org/react";
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
+} from "@nextui-org/navbar";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  const params = useParams();
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [params]);
+
   return (
     <NextNavbar
       classNames={{
         base: "drop-shadow",
       }}
       isBlurred={false}
-      shouldHideOnScroll={false}
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarBrand>
         <Link className="flex gap-2 items-center" href="#main">
@@ -39,6 +53,20 @@ const Navbar = () => {
           <Link href="#rsvp">Ucapan & RSVP</Link>
         </NavbarItem>
       </NavbarContent>
+      <NavbarContent className="hidden max-md:flex" justify="end">
+        <NavbarMenuToggle />
+      </NavbarContent>
+      <NavbarMenu className="font-mono">
+        <NavbarMenuItem className="pt-2 pb-2">
+          <Link href="#akad">Akad & Resepsi</Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem className="pt-2 pb-2">
+          <Link href="#support">Hadiah Pernikahan</Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem className="pt-2 pb-2">
+          <Link href="#rsvp">Ucapan & RSVP</Link>
+        </NavbarMenuItem>
+      </NavbarMenu>
     </NextNavbar>
   );
 };
