@@ -10,6 +10,8 @@ import { fontSans, fontSerif, fontMono } from "../config/fonts";
 
 import { Providers } from "./provider";
 
+import Navbar from "@/components/navbar";
+
 export const metadata: Metadata = {
   title: "Wedding Website",
   description: "Wedding Website",
@@ -28,9 +30,7 @@ export default function RootLayout({
         )}
       >
         <Providers>
-          <div className="font-mono">
-            <Toaster position="bottom-center" />
-          </div>
+          <Toaster containerClassName="font-mono" position="bottom-center" />
           <Suspense
             fallback={
               <div className="h-screen font-mono flex place-content-center items-center">
@@ -38,6 +38,7 @@ export default function RootLayout({
               </div>
             }
           >
+            <Navbar />
             {children}
           </Suspense>
         </Providers>
